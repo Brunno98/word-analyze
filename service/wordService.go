@@ -24,3 +24,47 @@ func AnalyzeText(text *string) (map[string]int, error) {
 
 	return wordsFrequency, nil
 }
+
+func GetMostFrequentWord(words *map[string]int) *map[string]int {
+	if words == nil || len(*words) == 0 {
+		return nil
+	}
+
+	var mostFrequentWord string
+	for k, v := range *words {
+		if mostFrequentWord == "" {
+			mostFrequentWord = k
+			continue
+		}
+		if v > (*words)[mostFrequentWord] {
+			mostFrequentWord = k
+		} else if v == (*words)[mostFrequentWord] {
+			if k < mostFrequentWord {
+				mostFrequentWord = k
+			}
+		}
+	}
+	return &map[string]int{mostFrequentWord: (*words)[mostFrequentWord]}
+}
+
+func GetLessFrequentWord(words *map[string]int) *map[string]int {
+	if words == nil || len(*words) == 0 {
+		return nil
+	}
+
+	var lessFrequentWord string
+	for k, v := range *words {
+		if lessFrequentWord == "" {
+			lessFrequentWord = k
+			continue
+		}
+		if v < (*words)[lessFrequentWord] {
+			lessFrequentWord = k
+		} else if v == (*words)[lessFrequentWord] {
+			if k < lessFrequentWord {
+				lessFrequentWord = k
+			}
+		}
+	}
+	return &map[string]int{lessFrequentWord: (*words)[lessFrequentWord]}
+}

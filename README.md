@@ -4,7 +4,7 @@ Aplicação qua analisa o texto informado e retorna algumas infomações como, p
 Requisitos funcionais:
 [x] usuario deve poder enviar um texto;
 [x] usuario recebe resposta as palavras contidadas no texto e sua frequencia;
-[ ] na resposta deve vir tambem a informação das palavras mais e menos usadas, caso tenha mais de 1, usar a primeira de acorda com a ordem alfabetica
+[x] na resposta deve vir tambem a informação das palavras mais e menos usadas, caso tenha mais de 1, usar a primeira de acordo com a ordem alfabetica
 [ ] informar quais palavras são palindromo
 
 

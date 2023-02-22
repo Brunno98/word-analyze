@@ -25,10 +25,17 @@ func main() {
 			return
 		}
 
+		mostFrequent := service.GetMostFrequentWord(&analyzeResult)
+		lessFrequent := service.GetLessFrequentWord(&analyzeResult)
+
 		var response struct {
-			Words map[string]int `json:"words"`
+			Words        map[string]int `json:"words"`
+			MostFrequent map[string]int `json:"mostFrequent"`
+			LessFrequent map[string]int `json:"lessFrequent"`
 		}
 		response.Words = analyzeResult
+		response.MostFrequent = *mostFrequent
+		response.LessFrequent = *lessFrequent
 		ctx.IndentedJSON(http.StatusOK, response)
 	})
 	r.Run()
