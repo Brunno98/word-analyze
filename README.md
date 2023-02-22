@@ -16,3 +16,5 @@ Regras de negocio:
 [ ] caso o texto enviado esteja vazio ou tenha somente espaços, deve retornar um BAD_REQUEST;
 [x] deve-se tratar letras maiusculas iguais as minusculas;
 [x] ignorar o caracter '.';
+[ ] devem ser ignorados caracters nao alfanumericos (':', '/', etc) no inicio e fim da palavra. ex: 'lorem:' => 'lorem', '/foo' => 'foo';
+[ ] deve ser considerado caracters não alfanumerocos no meio da palavra. ex: 'lo-rem', 'foo/bar';
