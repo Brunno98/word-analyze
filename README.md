@@ -14,5 +14,5 @@ Requisitos não funcionais:
 
 Regras de negocio:
 [ ] caso o texto enviado esteja vazio ou tenha somente espaços, deve retornar um BAD_REQUEST;
-[ ] deve-se tratar letras maiusculas iguais as minusculas;
+[x] deve-se tratar letras maiusculas iguais as minusculas;
 [x] ignorar o caracter '.';
