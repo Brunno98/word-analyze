@@ -48,3 +48,18 @@ func TestAnalyzeTextShouldIgnoreDotCaracter(t *testing.T) {
 		t.Error("Outcome map isn't equal to expected!")
 	}
 }
+
+func TestAnalyzeTextShouldIgnoreDifferenceBetweenCaseLetter(t *testing.T) {
+	text := "foo bar FOO"
+	expect := map[string]int{"foo": 2, "bar": 1}
+
+	outcome, err := AnalyzeText(&text)
+	if err != nil {
+		t.Error("Analyze text should not generate an error")
+	}
+
+	if !maps.Equal(expect, outcome) {
+		t.Error("Outcome map isn't equal to expected!")
+	}
+
+}
