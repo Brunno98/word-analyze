@@ -8,18 +8,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type requestBody struct {
-	Text string `json:"text"`
-}
-
 func main() {
 	r := gin.Default()
 	r.POST("/analyze", func(ctx *gin.Context) {
-		var body requestBody
+		var body struct {
+			Text string `json:"text"`
+		}
 		if err := ctx.BindJSON(&body); err != nil {
 			return
 		}
-		fmt.Println(body)
 
 		analyzeResult, err := service.AnalyzeText(&body.Text)
 		if err != nil {
@@ -28,7 +25,11 @@ func main() {
 			return
 		}
 
-		ctx.IndentedJSON(http.StatusOK, analyzeResult)
+		var response struct {
+			Words map[string]int `json:"words"`
+		}
+		response.Words = analyzeResult
+		ctx.IndentedJSON(http.StatusOK, response)
 	})
 	r.Run()
 }
