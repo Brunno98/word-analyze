@@ -5,7 +5,7 @@ Requisitos funcionais:
 [x] usuario deve poder enviar um texto;
 [x] usuario recebe resposta as palavras contidadas no texto e sua frequencia;
 [x] na resposta deve vir tambem a informação das palavras mais e menos usadas, caso tenha mais de 1, usar a primeira de acordo com a ordem alfabetica
-[ ] informar quais palavras são palindromo
+[x] informar quais palavras são palindromo
 
 
 Requisitos não funcionais:

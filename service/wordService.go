@@ -68,3 +68,22 @@ func GetLessFrequentWord(words *map[string]int) *map[string]int {
 	}
 	return &map[string]int{lessFrequentWord: (*words)[lessFrequentWord]}
 }
+
+func IsPalindrome(word *string) bool {
+	for i := 0; i < len(*word)/2; i++ {
+		if (*word)[i] != (*word)[len(*word)-1-i] {
+			return false
+		}
+	}
+	return true
+}
+
+func GetPalindromeWords(words *map[string]int) []string {
+	var palindromes []string
+	for word := range *words {
+		if IsPalindrome(&word) {
+			palindromes = append(palindromes, word)
+		}
+	}
+	return palindromes
+}

@@ -28,14 +28,18 @@ func main() {
 		mostFrequent := service.GetMostFrequentWord(&analyzeResult)
 		lessFrequent := service.GetLessFrequentWord(&analyzeResult)
 
+		palindromes := service.GetPalindromeWords(&analyzeResult)
+
 		var response struct {
-			Words        map[string]int `json:"words"`
-			MostFrequent map[string]int `json:"mostFrequent"`
-			LessFrequent map[string]int `json:"lessFrequent"`
+			Words           map[string]int `json:"words"`
+			MostFrequent    map[string]int `json:"mostFrequent"`
+			LessFrequent    map[string]int `json:"lessFrequent"`
+			PalindromeWords []string       `json:"palindromeWords"`
 		}
 		response.Words = analyzeResult
 		response.MostFrequent = *mostFrequent
 		response.LessFrequent = *lessFrequent
+		response.PalindromeWords = palindromes
 		ctx.IndentedJSON(http.StatusOK, response)
 	})
 	r.Run()

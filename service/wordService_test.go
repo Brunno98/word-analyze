@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"golang.org/x/exp/maps"
+	"golang.org/x/exp/slices"
 )
 
 func TestAnalyzeTextWithEmptyTextShouldReturnError(t *testing.T) {
@@ -103,4 +104,31 @@ func TestGetLessFrequencyFromEmptyMapShouldRenturnNil(t *testing.T) {
 	if lessFrequency != nil {
 		t.Errorf("GetLessFrequency return a value when given a empty map!")
 	}
+}
+
+func TestIsPalindrome(t *testing.T) {
+	palindromeWord := "ovo"
+	notPalindrome := "foo"
+
+	if !IsPalindrome(&palindromeWord) {
+		t.Errorf("word %s should be a palidrome", palindromeWord)
+	}
+
+	if IsPalindrome(&notPalindrome) {
+		t.Errorf("word %s shouldn't be a palindrome", notPalindrome)
+	}
+}
+
+func TestGetPalindromeWords(t *testing.T) {
+	words := map[string]int{"foo": 2, "ovo": 1, "bar": 1, "abcdedcba": 1}
+	outcome := GetPalindromeWords(&words)
+
+	if !slices.Contains(outcome, "ovo") || !slices.Contains(outcome, "abcdedcba") {
+		t.Error("GetPalindromeWords should have returned the words 'ovo' and 'abcdedcba'")
+	}
+
+	if slices.Contains(outcome, "foo") || slices.Contains(outcome, "bar") {
+		t.Error("GetPalindromeWords shouldn't have returned the words 'foo' or 'bar'")
+	}
+
 }
