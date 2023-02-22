@@ -13,6 +13,7 @@ func AnalyzeText(text *string) (map[string]int, error) {
 	words := strings.Split(*text, " ")
 	wordsFrequency := map[string]int{}
 	for _, word := range words {
+		word = strings.ReplaceAll(word, ".", "")
 		if val, ok := wordsFrequency[word]; ok {
 			wordsFrequency[word] = val + 1
 		} else {
